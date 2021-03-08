@@ -26,19 +26,19 @@ Load balancing ensures that the application will be highly available, in additio
   - The security aspect of load balancers help mitigate against denial of service attacks. The advantage of a jumpbox on the other hand limits the amount of attack vectors that can access our internal network. 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the configuration files and system logs.
-- _TODO: What does Filebeat watch for?_
+- _: What does Filebeat watch for?_
   - Filebeat watches for sudo commands, SSH logins, and system logs 
-- _TODO: What does Metricbeat record?_
+- _: What does Metricbeat record?_
   - Metricbeat watches for CPU usage, RAM, and network usage.
 
 The configuration details of each machine may be found below.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| Web-1     | Webserver          |            | Linux                 |
-| Web-2     | Webserver         |            |                  |
-| ELK-VM    | SIEM (System Information Event Manager)  |            |                  |
+| Jump Box | Gateway  | 10.0.0.4   | Linux            |
+| Web-1     | Webserver          |   10.0.0.5         | Linux                 |
+| Web-2     | Webserver         |     10.0.0.6       |  Linux                |
+| ELK-VM    | SIEM (System Information Event Manager)  |   10.1.0.4         |  Linux                |
 
 ### Access Policies
 
@@ -49,16 +49,16 @@ Only the `Jumpbox` machine can accept connections from the Internet. Access to t
 
 Machines within the network can only be accessed by `Ansible Container`.
 - _Which machine did you allow to access your ELK VM? What was its IP address?_
-  - The `Ansible Container` is the only one that can SSH into the ELK VM and its IP address is ___
+  - The `Ansible Container` is the only one that can SSH into the ELK VM and its IP address is 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | Yes              | My IP Address   |
-| Web-1  | w/ HTTP (Yes) & w/ SSH (No)                   |                      |
-| Web-2          | w/ HTTP (Yes) & w/ SSH (No)                     |                      |
-| Elk-VM         | w/ HTTP (Yes) & w/ SSH (No)                     |                      |
+| Web-1  | w/ HTTP (Yes) & w/ SSH (No)                   |     10.0.0.5                 |
+| Web-2          | w/ HTTP (Yes) & w/ SSH (No)                     |  10.0.0.6                    |
+| Elk-VM         | w/ HTTP (Yes) & w/ SSH (No)                     |    10.1.0.4                  |
 
 ### Elk Configuration
 
